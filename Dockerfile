@@ -1,14 +1,13 @@
-FROM debian:jessie
-
+FROM fedora:latest
+    
 MAINTAINER Artem Silenkov <artem.silenkov@gmail.com>
 
 ENV S3_TOOLS_VERSION 2.0.1
 
 RUN \
-	apt-get -y update && \
-	apt-get --no-install-recommends --assume-yes install python-setuptools python-magic ca-certificates wget && \
-	apt-get clean && \
-	rm -rf /var/lib/apt/lists/*
+	dnf -y update && \
+	dnf install python-setuptools python-magic ca-certificates wget && \
+	dnf clean all 
 
 RUN \
 	wget "http://downloads.sourceforge.net/project/s3tools/s3cmd/${S3_TOOLS_VERSION}/s3cmd-${S3_TOOLS_VERSION}.tar.gz" -q -O - | tar xz -C /tmp && \
