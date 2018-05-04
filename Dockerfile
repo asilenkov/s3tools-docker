@@ -6,7 +6,7 @@ ENV S3_TOOLS_VERSION 2.0.1
 
 RUN \
 	dnf -y update && \
-	dnf install python-setuptools python-magic ca-certificates wget && \
+	dnf install -y python-setuptools python-magic ca-certificates wget && \
 	dnf clean all 
 
 RUN \
